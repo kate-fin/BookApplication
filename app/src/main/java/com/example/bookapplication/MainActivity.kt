@@ -1,0 +1,31 @@
+package com.example.bookapplication
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
+import com.example.bookapplication.Info
+import com.example.bookapplication.databinding.ActivityMainBinding
+import com.google.android.material.navigation.NavigationView
+import javax.inject.Inject
+import kotlinx.android.synthetic.main.activity_main.*
+
+
+class MainActivity : AppCompatActivity() {
+    private var _binding: ActivityMainBinding? = null
+    private val binding get() = _binding!!
+    @Inject lateinit var info: Info
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        _binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val navView: NavigationView = binding.navView
+        val navController = findNavController(R.id.nav_host_activity_main)
+        navView.setupWithNavController(navController)
+//        DaggerMagicBox.create().poke(this)
+//        text_view.text = info.text
+    }
+}
