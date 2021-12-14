@@ -1,19 +1,10 @@
-package com.example.bookapplication.models
+package com.example.bookapplication.source.remote.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class BestSellersModel(
-    val copyright: String,
-    @SerialName("num_results")
-    val numResults: Int,
-    val results: List<BookModel>,
-    val status: String
-)
-
-@Serializable
-data class BookModel(
+data class BookNetModel(
     @SerialName("age_group")
     val ageGroup: String,
     val author: String,

@@ -5,17 +5,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".best_sellers.BestSellersFragment">
+    tools:context=".best_sellers.list.BestSellersFragment">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textSize="48sp"
-        android:text="@string/hello_blank_fragment" />
+        android:textSize="40sp"
+        android:text="@string/welcome" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/booksRV"
@@ -25,7 +26,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:spanCount="2">
 <!--        <androidx.core.widget.NestedScrollView-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="match_parent"/>-->

@@ -1,4 +1,4 @@
-package com.example.bookapplication.best_sellers
+package com.example.bookapplication.best_sellers.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,12 +7,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.bookapplication.BooksAdapter
 import com.example.bookapplication.R
-import com.example.bookapplication.databinding.FragmentFirstBinding
+import com.example.bookapplication.databinding.FragmentBestSellersBinding
 
 class BestSellersFragment : Fragment() {
-    private var _binding: FragmentFirstBinding? = null
+    private var _binding: FragmentBestSellersBinding? = null
     private val binding get() = _binding!!
     private val viewModel: BestSellersViewModel by viewModels()
 
@@ -20,7 +19,7 @@ class BestSellersFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        _binding = FragmentBestSellersBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -43,8 +42,8 @@ class BestSellersFragment : Fragment() {
         })
 
         viewModel.bestSellersLiveData.observe(viewLifecycleOwner, {bestSellers ->
-            binding.textView.text = bestSellers.numResults.toString()
-            val adapter = BooksAdapter(bestSellers.results)
+//            binding.textView.text = bestSellers.numResults.toString()
+            val adapter = BooksAdapter(bestSellers)
             binding.booksRV.adapter = adapter
         })
     }
