@@ -6,13 +6,14 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.bookapplication.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
+import javax.inject.Inject
 
 
 class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
-//    @Inject lateinit var info: Info
-
+    @Inject
+    lateinit var info: Info
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_activity_main)
         navView.setupWithNavController(navController)
-//        DaggerMagicBox.create().poke(this)
-//        text_view.text = info.text
+        DaggerMagicBox.create().poke(this)
+        binding.textView.text = info.text
     }
 }
