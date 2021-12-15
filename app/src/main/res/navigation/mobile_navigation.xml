@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/bestSellersFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/bestSellersFragment"
-        android:name="com.example.bookapplication.best_sellers.list.BestSellersFragment"
+        android:name="com.example.bookapplication.ui.best_sellers.list.BestSellersFragment"
         android:label="fragment_first"
         tools:layout="@layout/fragment_best_sellers" >
         <action
@@ -16,10 +16,19 @@
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.example.bookapplication.best_sellers.details.DetailsFragment"
+        android:name="com.example.bookapplication.ui.best_sellers.details.DetailsFragment"
         android:label="DetailsFragment" >
         <argument
             android:name="book"
-            app:argType="com.example.bookapplication.best_sellers.BookModel" />
+            app:argType="com.example.bookapplication.ui.best_sellers.BookModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.bookapplication.ui.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_bestSellersFragment"
+            app:destination="@id/bestSellersFragment" />
     </fragment>
 </navigation>

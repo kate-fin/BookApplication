@@ -1,10 +1,10 @@
-package com.example.bookapplication.best_sellers.list
+package com.example.bookapplication.ui.best_sellers.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.bookapplication.best_sellers.BookModel
+import com.example.bookapplication.ui.best_sellers.BookModel
 import com.example.bookapplication.source.remote.RetrofitModule
 import kotlinx.coroutines.launch
 

@@ -1,4 +1,4 @@
-package com.example.bookapplication
+package com.example.bookapplication.di
 
 import dagger.Provides
 import javax.inject.Inject

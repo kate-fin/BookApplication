@@ -1,4 +1,4 @@
-package com.example.bookapplication.best_sellers.list
+package com.example.bookapplication.ui.best_sellers.list
 
 import android.os.Bundle
 import android.view.LayoutInflater

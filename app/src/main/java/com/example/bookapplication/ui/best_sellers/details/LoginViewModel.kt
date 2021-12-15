@@ -1,6 +1,5 @@
-package com.example.bookapplication.best_sellers.details
+package com.example.bookapplication.ui.best_sellers.details
 
-import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

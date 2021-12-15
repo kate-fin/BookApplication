@@ -1,4 +1,4 @@
-package com.example.bookapplication.best_sellers
+package com.example.bookapplication.ui.best_sellers
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
