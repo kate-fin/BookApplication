@@ -4,11 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.bookapplication.interfaces.RepoService
 import com.example.bookapplication.ui.best_sellers.BookModel
 import com.example.bookapplication.source.remote.RetrofitModule
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class BestSellersViewModel: ViewModel() {
+
+class BestSellersViewModel @Inject constructor(private val booksApi: RepoService): ViewModel() {
     private val _bestSellersLiveData = MutableLiveData<List<BookModel>>()
     val bestSellersLiveData: LiveData<List<BookModel>> get() = _bestSellersLiveData
     private val _spinner = MutableLiveData<Boolean>()
@@ -19,7 +22,7 @@ class BestSellersViewModel: ViewModel() {
     fun getBestSellers(){
         viewModelScope.launch {
             _spinner.postValue(true)
-            val booksNet = RetrofitModule.booksApi.getBestSellers()
+            val booksNet = booksApi.getBestSellers()
             if (booksNet != null) {
                 val books = booksNet.results.map {
                     BookModel(title = it.title, author = it.author, isFavourite = false)

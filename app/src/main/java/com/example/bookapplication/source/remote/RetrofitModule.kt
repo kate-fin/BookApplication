@@ -11,16 +11,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 
 object RetrofitModule {
-    private val client: OkHttpClient = OkHttpClient.Builder()
+    val client: OkHttpClient = OkHttpClient.Builder()
         .addInterceptor { chain -> return@addInterceptor addApiKeyToRequests(chain) }
         .addInterceptor(getHttpLogger())
         .build()
-    private val retrofit = Retrofit.Builder()
-        .baseUrl("https://api.nytimes.com/svc/books/v3/lists/")
-        .addConverterFactory(GsonConverterFactory.create())
-        .client(client)
-        .build()
-    val booksApi: RepoService = retrofit.create()
+//    private val retrofit = Retrofit.Builder()
+//        .baseUrl("https://api.nytimes.com/svc/books/v3/lists/")
+//        .addConverterFactory(GsonConverterFactory.create())
+//        .client(client)
+//        .build()
+//    val booksApi: RepoService = retrofit.create()
 
     private fun addApiKeyToRequests(chain: Interceptor.Chain): Response {
         val request = chain.request().newBuilder()

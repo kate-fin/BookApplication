@@ -7,19 +7,30 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.example.bookapplication.R
 import com.example.bookapplication.databinding.FragmentBestSellersBinding
+import com.example.bookapplication.extension.appComponent
+import com.example.bookapplication.extension.preferences
+import com.example.bookapplication.interfaces.RepoService
+import com.example.bookapplication.ui.login.LoginViewModel
+import com.example.bookapplication.ui.login.LoginViewModelFactory
+import javax.inject.Inject
 
 class BestSellersFragment : Fragment() {
     private var _binding: FragmentBestSellersBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: BestSellersViewModel by viewModels()
+    private lateinit var viewModel: BestSellersViewModel
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentBestSellersBinding.inflate(inflater, container, false)
+        context?.appComponent?.inject(this)
+        viewModel = ViewModelProvider(this, viewModelFactory)[BestSellersViewModel::class.java]
         return binding.root
     }
 

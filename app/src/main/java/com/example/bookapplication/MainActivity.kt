@@ -5,9 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.bookapplication.databinding.ActivityMainBinding
-import com.example.bookapplication.di.AppComponent
-import com.example.bookapplication.di.DaggerAppComponent
 import com.example.bookapplication.di.Info
+import com.example.bookapplication.extension.appComponent
 import com.google.android.material.navigation.NavigationView
 import javax.inject.Inject
 
@@ -28,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 //        DaggerAppComponent.create().inject(this)
 //        (application as AppComponent).inject()
+        appComponent.inject(this)
         binding.textView.text = info.text
     }
 }

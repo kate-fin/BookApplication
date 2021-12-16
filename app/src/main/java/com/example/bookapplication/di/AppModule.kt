@@ -2,14 +2,18 @@ package com.example.bookapplication.di
 
 import android.app.Application
 import android.content.Context
+import androidx.lifecycle.ViewModel
+import com.example.bookapplication.ui.best_sellers.list.BestSellersViewModel
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
+import dagger.multibindings.IntoMap
 import javax.inject.Singleton
 
 @Module
-class AppModule(private val app: Application) {//SomeModule
+class AppModule {//SomeModule
     @Provides
-    open fun sayLoveDagger2(): Info {//providesInfo() - не вызывается в коде
+    fun sayLoveDagger2(): Info {//providesInfo() - не вызывается в коде
         return Info("Love Dagger 2")
     }
 
@@ -17,3 +21,4 @@ class AppModule(private val app: Application) {//SomeModule
 //    @Singleton
 //    fun provideContext(): Context = app
 }
+
