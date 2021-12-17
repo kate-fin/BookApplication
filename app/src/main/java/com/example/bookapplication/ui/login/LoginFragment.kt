@@ -11,20 +11,25 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.bookapplication.R
 import com.example.bookapplication.databinding.FragmentLoginBinding
+import com.example.bookapplication.extension.appComponent
 import com.example.bookapplication.extension.preferences
+import javax.inject.Inject
 
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var viewModel: LoginViewModel
+    @Inject
+    lateinit var viewModelProvider: ViewModelProvider.Factory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
-        viewModel = ViewModelProvider(this, LoginViewModelFactory(requireContext().preferences))
+        context?.appComponent?.inject(this)
+        viewModel = ViewModelProvider(this, viewModelProvider)//LoginViewModelFactory(requireContext().preferences))
             .get(LoginViewModel::class.java)
         return binding.root
     }

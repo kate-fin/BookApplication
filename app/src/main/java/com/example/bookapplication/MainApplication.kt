@@ -2,6 +2,7 @@ package com.example.bookapplication
 
 import android.app.Application
 import com.example.bookapplication.di.AppComponent
+import com.example.bookapplication.di.AppModule
 import com.example.bookapplication.di.DaggerAppComponent
 
 class MainApplication : Application() {
@@ -10,13 +11,6 @@ class MainApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        appComponent = DaggerAppComponent.builder().build()
+        appComponent = DaggerAppComponent.builder().appModule(AppModule(this)).build()
     }
-
-//    protected fun applicationInjector(): AndroidInjector<out DaggerApplication?> {
-//        val component: ApplicationComponent =
-//            DaggerApplicationComponent.builder().application(this).build()
-//        component.inject(this)
-//        return component
-//    }
 }

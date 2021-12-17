@@ -11,14 +11,10 @@ import dagger.multibindings.IntoMap
 import javax.inject.Singleton
 
 @Module
-class AppModule {//SomeModule
-    @Provides
-    fun sayLoveDagger2(): Info {//providesInfo() - не вызывается в коде
-        return Info("Love Dagger 2")
-    }
+class AppModule(private val application: Application) {//SomeModule
 
-//    @Provides
-//    @Singleton
-//    fun provideContext(): Context = app
+    @Provides
+    @Singleton
+    fun provideContext(): Context = application
 }
 

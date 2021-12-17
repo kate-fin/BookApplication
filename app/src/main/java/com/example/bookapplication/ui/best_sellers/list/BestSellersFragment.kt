@@ -14,7 +14,6 @@ import com.example.bookapplication.extension.appComponent
 import com.example.bookapplication.extension.preferences
 import com.example.bookapplication.interfaces.RepoService
 import com.example.bookapplication.ui.login.LoginViewModel
-import com.example.bookapplication.ui.login.LoginViewModelFactory
 import javax.inject.Inject
 
 class BestSellersFragment : Fragment() {

@@ -7,9 +7,10 @@ import androidx.lifecycle.ViewModel
 import com.example.bookapplication.extension.autologin
 import com.example.bookapplication.extension.login
 import com.example.bookapplication.extension.password
+import javax.inject.Inject
 
 
-class LoginViewModel(private val preferences: SharedPreferences) : ViewModel() {
+class LoginViewModel @Inject constructor(private val preferences: SharedPreferences) : ViewModel() {
 
     private val _haveAccess = MutableLiveData<Boolean>()
     val haveAccess: LiveData<Boolean> get() = _haveAccess
