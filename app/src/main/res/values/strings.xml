@@ -2,10 +2,13 @@
     <string name="app_name">Book Application</string>
     <string name="welcome">Добро пожаловать!</string>
     <string name="error_message">Что-то пошло не так</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="input_title">Вход</string>
+    <string name="login_title">Логин</string>
+    <string name="password_title">Пароль</string>
     <string name="input_login">Введите логин</string>
     <string name="input_password">Введите пароль</string>
     <string name="is_autologin_title">Запомнить меня</string>
     <string name="input_btn_title">Войти</string>
     <string name="auth_alert">"Логин или пароль некорректны"</string>
+    <string name="descriptionTitle">Описание</string>
 </resources>

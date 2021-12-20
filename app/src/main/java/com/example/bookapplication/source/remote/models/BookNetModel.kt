@@ -11,7 +11,7 @@ data class BookNetModel(
     val contributor: String,
     @SerialName("contributor_note")
     val contributorNote: String,
-    val description: String,
+    val description: String?,
 //    isbns:array[object:]
     val price: Float,
     val publisher: String,

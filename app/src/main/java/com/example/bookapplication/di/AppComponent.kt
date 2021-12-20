@@ -10,8 +10,8 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [AppModule::class, NetworkModule::class, ViewModelModule::class,
     SharedPreferencesModule::class])
-interface AppComponent /*SomeComponent*/{
-    fun inject(app: MainActivity)//inject
+interface AppComponent {
+    fun inject(app: MainActivity)
     fun inject(app: BestSellersFragment)
     fun inject(app: LoginFragment)
 }

@@ -11,7 +11,7 @@ import dagger.multibindings.IntoMap
 import javax.inject.Singleton
 
 @Module
-class AppModule(private val application: Application) {//SomeModule
+class AppModule(private val application: Application) {
 
     @Provides
     @Singleton

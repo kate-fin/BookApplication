@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bookapplication.R
+import com.example.bookapplication.extension.showAlert
 import com.example.bookapplication.ui.best_sellers.BookModel
 
 class BooksAdapter(private val books: List<BookModel>): RecyclerView.Adapter<BooksViewHolder>() {
@@ -32,6 +33,7 @@ class BooksViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val titleView: TextView = itemView.findViewById(R.id.bookTitle)
     private val authorView: TextView = itemView.findViewById(R.id.bookAuthor)
     private val favouriteView: CheckBox = itemView.findViewById(R.id.bookFavourite)
+    private val context = itemView.context
 
     fun bind(book: BookModel){
         titleView.text = book.title
@@ -40,8 +42,7 @@ class BooksViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 //        favouriteView.setOnCheckedChangeListener { _, isChecked ->
 //        }
         itemView.setOnClickListener {
-            val action = BestSellersFragmentDirections.actionBestSellersFragmentToDetailsFragment(book)
-            it.findNavController().navigate(action)
+            context.showAlert(context.getString(R.string.descriptionTitle), book.description)
         }
     }
 }

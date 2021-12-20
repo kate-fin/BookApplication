@@ -29,7 +29,7 @@ class LoginFragment : Fragment() {
     ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         context?.appComponent?.inject(this)
-        viewModel = ViewModelProvider(this, viewModelProvider)//LoginViewModelFactory(requireContext().preferences))
+        viewModel = ViewModelProvider(this, viewModelProvider)
             .get(LoginViewModel::class.java)
         return binding.root
     }

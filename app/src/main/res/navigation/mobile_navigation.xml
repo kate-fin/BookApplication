@@ -10,17 +10,6 @@
         android:name="com.example.bookapplication.ui.best_sellers.list.BestSellersFragment"
         android:label="fragment_first"
         tools:layout="@layout/fragment_best_sellers" >
-        <action
-            android:id="@+id/action_bestSellersFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/detailsFragment"
-        android:name="com.example.bookapplication.ui.best_sellers.details.DetailsFragment"
-        android:label="DetailsFragment" >
-        <argument
-            android:name="book"
-            app:argType="com.example.bookapplication.ui.best_sellers.BookModel" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
