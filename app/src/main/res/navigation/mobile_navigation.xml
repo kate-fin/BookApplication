@@ -10,6 +10,9 @@
         android:name="com.example.bookapplication.ui.best_sellers.list.BestSellersFragment"
         android:label="fragment_first"
         tools:layout="@layout/fragment_best_sellers" >
+        <action
+            android:id="@+id/action_bestSellersFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -20,4 +23,8 @@
             android:id="@+id/action_loginFragment_to_bestSellersFragment"
             app:destination="@id/bestSellersFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.bookapplication.ui.settings.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>

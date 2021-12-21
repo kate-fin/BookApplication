@@ -11,4 +11,6 @@
     <string name="input_btn_title">Войти</string>
     <string name="auth_alert">"Логин или пароль некорректны"</string>
     <string name="descriptionTitle">Описание</string>
+    <string name="settings_title">Настройки</string>
+    <string name="sign_out">Выход</string>
 </resources>

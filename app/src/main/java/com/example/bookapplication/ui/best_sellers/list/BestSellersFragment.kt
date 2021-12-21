@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.bookapplication.R
 import com.example.bookapplication.databinding.FragmentBestSellersBinding
 import com.example.bookapplication.extension.appComponent
@@ -56,5 +57,9 @@ class BestSellersFragment : Fragment() {
             val adapter = BooksAdapter(bestSellers)
             binding.booksRV.adapter = adapter
         })
+
+        binding.toolbar.settings.setOnClickListener {
+            findNavController().navigate(BestSellersFragmentDirections.actionBestSellersFragmentToSettingsFragment())
+        }
     }
 }
