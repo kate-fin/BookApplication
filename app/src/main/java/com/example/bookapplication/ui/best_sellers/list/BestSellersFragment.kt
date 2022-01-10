@@ -39,15 +39,15 @@ class BestSellersFragment : Fragment() {
         viewModel.getBestSellers()
         viewModel.spinner.observe(viewLifecycleOwner, { isLoading ->
             if (isLoading) {
-                binding.booksPB.visibility = View.VISIBLE
+                binding.bestSellersPrBar.visibility = View.VISIBLE
             } else {
-                binding.booksPB.visibility = View.GONE
+                binding.bestSellersPrBar.visibility = View.GONE
             }
         })
 
         viewModel.error.observe(viewLifecycleOwner, { isError ->
             if (isError) {
-                binding.booksPB.visibility = View.GONE
+                binding.bestSellersPrBar.visibility = View.GONE
                 Toast.makeText(context, getString(R.string.error_message), Toast.LENGTH_SHORT).show()
             }
         })
@@ -55,10 +55,10 @@ class BestSellersFragment : Fragment() {
         viewModel.bestSellersLiveData.observe(viewLifecycleOwner, {bestSellers ->
 //            binding.textView.text = bestSellers.numResults.toString()
             val adapter = BooksAdapter(bestSellers)
-            binding.booksRV.adapter = adapter
+            binding.bestSellersRecView.adapter = adapter
         })
 
-        binding.toolbar.settings.setOnClickListener {
+        binding.bestSellerToolbar.settings.setOnClickListener {
             findNavController().navigate(BestSellersFragmentDirections.actionBestSellersFragmentToSettingsFragment())
         }
     }

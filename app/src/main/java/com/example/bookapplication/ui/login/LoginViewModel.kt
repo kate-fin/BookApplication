@@ -22,16 +22,15 @@ class LoginViewModel @Inject constructor(private val preferences: SharedPreferen
     }
 
     fun authorization(login: String, password: String, autologin: Boolean) {
-        //TODO hash code
-        val loginHash = ""
-        val passwordHash = ""
+        val loginHash = login.hashCode().toString()
+        val passwordHash = password.hashCode().toString()
         if (preferences.login.isNullOrEmpty()) {
-            preferences.login = login
+            preferences.login = loginHash
         }
         if (preferences.password.isNullOrEmpty()) {
-            preferences.password = password
+            preferences.password = passwordHash
         }
         preferences.autologin = autologin
-        _haveAccess.postValue(login == preferences.login && password == preferences.password)
+        _haveAccess.postValue(loginHash == preferences.login && passwordHash == preferences.password)
     }
 }

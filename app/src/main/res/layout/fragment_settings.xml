@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <include
+        android:id="@+id/settingsToolbar"
+        layout="@layout/toolbar_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/settingsLoginTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:text="@string/change_login"
+        app:layout_constraintTop_toBottomOf="@id/settingsToolbar"
+        app:layout_constraintStart_toStartOf="@id/settingsLeftBarrier"/>
+
+    <EditText
+        android:id="@+id/settingsLoginEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        app:layout_constraintTop_toTopOf="@id/settingsLoginTitle"
+        app:layout_constraintStart_toEndOf="@id/settingsLoginTitle"
+        app:layout_constraintBottom_toBottomOf="@id/settingsLoginTitle"/>
+
+    <TextView
+        android:id="@+id/settingsPasswordTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:text="@string/change_password"
+        app:layout_constraintTop_toBottomOf="@id/settingsLoginTitle"
+        app:layout_constraintStart_toStartOf="@id/settingsLeftBarrier"/>
+
+    <EditText
+        android:id="@+id/settingsPasswordEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toTopOf="@id/settingsPasswordTitle"
+        app:layout_constraintBottom_toBottomOf="@id/settingsPasswordTitle"
+        app:layout_constraintStart_toEndOf="@id/settingsPasswordTitle"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/settingsSaveChanges"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save_changes"
+        android:background="@color/white"
+        android:paddingHorizontal="5dp"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="@id/settingsLeftBarrier"
+        app:layout_constraintTop_toBottomOf="@id/settingsPasswordTitle"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/settingsExit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/white"
+        android:textAllCaps="false"
+        android:layout_marginBottom="10dp"
+        android:text="@string/sign_out"
+        android:textColor="#F0FF0000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/settingsLeftBarrier" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/settingsLeftBarrier"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        app:barrierDirection="left" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

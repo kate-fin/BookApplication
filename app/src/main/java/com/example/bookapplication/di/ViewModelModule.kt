@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.bookapplication.ui.ViewModelFactory
 import com.example.bookapplication.ui.best_sellers.list.BestSellersViewModel
 import com.example.bookapplication.ui.login.LoginViewModel
+import com.example.bookapplication.ui.settings.SettingsViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -24,5 +25,10 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(LoginViewModel::class)
     abstract fun loginViewModel(viewModel: LoginViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SettingsViewModel::class)
+    abstract fun settingsViewModel(viewModel: SettingsViewModel): ViewModel
 
 }

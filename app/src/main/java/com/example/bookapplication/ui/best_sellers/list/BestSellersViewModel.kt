@@ -25,7 +25,7 @@ class BestSellersViewModel @Inject constructor(private val booksApi: RepoService
             val booksNet = booksApi.getBestSellers()
             if (booksNet != null) {
                 val books = booksNet.results.map {
-                    BookModel(title = it.title, author = it.author, isFavourite = false, description = it.description)
+                    BookModel(title = it.title, author = it.author, /*isFavourite = false,*/ description = it.description)
                 }
                 _bestSellersLiveData.postValue(books)
                 _spinner.postValue(false)

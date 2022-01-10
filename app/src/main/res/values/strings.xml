@@ -13,4 +13,7 @@
     <string name="descriptionTitle">Описание</string>
     <string name="settings_title">Настройки</string>
     <string name="sign_out">Выход</string>
+    <string name="change_login">Изменить логин</string>
+    <string name="change_password">Изменить пароль</string>
+    <string name="save_changes">Сохранить изменения</string>
 </resources>

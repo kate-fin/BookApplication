@@ -32,13 +32,13 @@ class BooksAdapter(private val books: List<BookModel>): RecyclerView.Adapter<Boo
 class BooksViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val titleView: TextView = itemView.findViewById(R.id.bookTitle)
     private val authorView: TextView = itemView.findViewById(R.id.bookAuthor)
-    private val favouriteView: CheckBox = itemView.findViewById(R.id.bookFavourite)
+//    private val favouriteView: CheckBox = itemView.findViewById(R.id.bookFavourite)
     private val context = itemView.context
 
     fun bind(book: BookModel){
         titleView.text = book.title
         authorView.text = book.author
-        favouriteView.isChecked = book.isFavourite
+//        favouriteView.isChecked = book.isFavourite
 //        favouriteView.setOnCheckedChangeListener { _, isChecked ->
 //        }
         itemView.setOnClickListener {

@@ -2,6 +2,7 @@ package com.example.bookapplication.ui.login
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -41,10 +42,11 @@ class LoginFragment : Fragment() {
                 findNavController().navigate(R.id.action_loginFragment_to_bestSellersFragment)
             } else {
                 Toast.makeText(context, getString(R.string.auth_alert), Toast.LENGTH_SHORT).show()
+                Log.i("LoginFragment", "login or password are incorrect")
             }
         })
 
-        binding.inputBtn.setOnClickListener {
+        binding.loginInputBtn.setOnClickListener {
             val login = binding.loginField.text.toString()
             val password = binding.passwordField.text.toString()
             val autologin = binding.isAutologin.isChecked
