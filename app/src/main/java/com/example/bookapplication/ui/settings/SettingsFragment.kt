@@ -53,7 +53,6 @@ class SettingsFragment: Fragment() {
         binding.settingsPasswordEditText.setOnKeyListener { view, keyCode, keyEvent ->
             if (keyEvent.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                 viewModel.savePassword(binding.settingsPasswordEditText.text.toString())
-                //TODO можно придумать контроллер, в котором будут правила для логина и пароля
                 return@setOnKeyListener true
             }
             return@setOnKeyListener false
