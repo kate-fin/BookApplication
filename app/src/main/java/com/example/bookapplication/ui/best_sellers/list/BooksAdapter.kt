@@ -3,9 +3,7 @@ package com.example.bookapplication.ui.best_sellers.list
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.TextView
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bookapplication.R
 import com.example.bookapplication.extension.showAlert
@@ -42,7 +40,7 @@ class BooksViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 //        favouriteView.setOnCheckedChangeListener { _, isChecked ->
 //        }
         itemView.setOnClickListener {
-            context.showAlert(context.getString(R.string.descriptionTitle), book.description)
+            context.showAlert(context.getString(R.string.description_title), book.description)
         }
     }
 }

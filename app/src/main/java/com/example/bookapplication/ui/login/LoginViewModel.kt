@@ -7,21 +7,26 @@ import androidx.lifecycle.ViewModel
 import com.example.bookapplication.extension.autologin
 import com.example.bookapplication.extension.login
 import com.example.bookapplication.extension.password
+import com.example.bookapplication.ui.login.models.IdentificatorUiState
 import javax.inject.Inject
 
 
 class LoginViewModel @Inject constructor(private val preferences: SharedPreferences) : ViewModel() {
 
-    private val _haveAccess = MutableLiveData<Boolean>()
-    val haveAccess: LiveData<Boolean> get() = _haveAccess
+    private val _uiStateAuthorization = MutableLiveData<IdentificatorUiState>()
+    val uiStateAuthorization: LiveData<IdentificatorUiState> get() = _uiStateAuthorization
 
     fun autoLogin() {
+        _uiStateAuthorization.postValue(IdentificatorUiState(isLoading = true))
         if (preferences.autologin) {
-            _haveAccess.postValue(true)
+            _uiStateAuthorization.postValue(IdentificatorUiState(isLoading = false, isLoggedIn = true))
+        } else {
+            _uiStateAuthorization.postValue(IdentificatorUiState(isLoading = false))
         }
     }
 
     fun authorization(login: String, password: String, autologin: Boolean) {
+        _uiStateAuthorization.postValue(IdentificatorUiState(isLoading = true))
         val loginHash = login.hashCode().toString()
         val passwordHash = password.hashCode().toString()
         if (preferences.login.isNullOrEmpty()) {
@@ -31,6 +36,10 @@ class LoginViewModel @Inject constructor(private val preferences: SharedPreferen
             preferences.password = passwordHash
         }
         preferences.autologin = autologin
-        _haveAccess.postValue(loginHash == preferences.login && passwordHash == preferences.password)
+        _uiStateAuthorization.postValue(
+            IdentificatorUiState(
+                isLoading = false,
+                isLoggedIn = loginHash == preferences.login && passwordHash == preferences.password)
+            )
     }
 }

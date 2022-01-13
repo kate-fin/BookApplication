@@ -6,9 +6,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.bookapplication.domain.LoginUseCase
 import com.example.bookapplication.domain.PasswordUseCase
+import com.example.bookapplication.domain.enums.ValidLogin
+import com.example.bookapplication.domain.enums.ValidPassword
 import com.example.bookapplication.extension.autologin
 import com.example.bookapplication.extension.login
 import com.example.bookapplication.extension.password
+import com.example.bookapplication.ui.settings.models.ChangeIdentificatorUiState
 import javax.inject.Inject
 
 
@@ -16,20 +19,27 @@ class SettingsViewModel @Inject constructor(private val preferences: SharedPrefe
                                             private val loginUseCase: LoginUseCase,
                                             private val passwordUseCase: PasswordUseCase) : ViewModel() {
 
+    private val _uiStateLogin = MutableLiveData<ChangeIdentificatorUiState>()
+    val uiStateLogin: LiveData<ChangeIdentificatorUiState> get() = _uiStateLogin
+    private val _uiStatePassword = MutableLiveData<ChangeIdentificatorUiState>()
+    val uiStatePassword: LiveData<ChangeIdentificatorUiState> get() = _uiStatePassword
+
     fun saveLogin(login: String) {
-        if (loginUseCase.isValid(login)) {
+        _uiStateLogin.postValue(ChangeIdentificatorUiState(isLoading = true))
+        val isValid = loginUseCase.isValid(login)
+        if (isValid == ValidLogin.SUCCESS) {
             preferences.login = login.hashCode().toString()
-        } else {
-            TODO()
         }
+        _uiStateLogin.postValue(ChangeIdentificatorUiState(isLoading = false, errorMessageCode = isValid.messageCode))
     }
 
     fun savePassword(password: String) {
-        if (passwordUseCase.isValid(password)) {
+        _uiStatePassword.postValue(ChangeIdentificatorUiState(isLoading = true))
+        val isValid = passwordUseCase.isValid(password)
+        if (isValid == ValidPassword.SUCCESS) {
             preferences.password = password.hashCode().toString()
-        } else {
-            TODO()
         }
+        _uiStatePassword.postValue(ChangeIdentificatorUiState(isLoading = false, errorMessageCode = isValid.messageCode))
     }
 
     fun saveAutologin(isAutologin: Boolean) {

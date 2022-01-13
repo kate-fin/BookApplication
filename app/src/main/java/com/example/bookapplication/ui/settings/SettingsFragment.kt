@@ -10,11 +10,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.bookapplication.R
 import com.example.bookapplication.databinding.FragmentSettingsBinding
-import com.example.bookapplication.extension.appComponent
-import com.example.bookapplication.extension.autologin
-import com.example.bookapplication.extension.login
-import com.example.bookapplication.extension.password
+import com.example.bookapplication.extension.*
 import com.example.bookapplication.ui.ViewModelFactory
 import javax.inject.Inject
 
@@ -38,9 +36,38 @@ class SettingsFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.settingsPrBar.visibility = View.GONE
 //        binding.settingsLoginEditText.setText(preferences.login)
 //        binding.settingsPasswordEditText.setText(preferences.password)
+
+        viewModel.uiStateLogin.observe(viewLifecycleOwner, { uiState ->
+            if (uiState.isLoading) {
+                binding.settingsPrBar.visibility = View.VISIBLE
+            } else {
+                binding.settingsPrBar.visibility = View.GONE
+            }
+            if (uiState.errorMessageCode != null) {
+                view.context.showAlert(
+                    title = getString(R.string.login_error_title),
+                    message = getString(uiState.errorMessageCode)
+                )
+            }
+        })
+
+        viewModel.uiStatePassword.observe(viewLifecycleOwner, { uiState ->
+            if (uiState.isLoading) {
+                binding.settingsPrBar.visibility = View.VISIBLE
+            } else {
+                binding.settingsPrBar.visibility = View.GONE
+            }
+            if (uiState.errorMessageCode != null) {
+                view.context.showAlert(
+                    title = getString(R.string.password_error_title),
+                    message = getString(uiState.errorMessageCode)
+                )
+            }
+        })
+
         binding.settingsLoginEditText.setOnKeyListener { view, keyCode, keyEvent ->
             if (keyEvent.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                 val login = binding.settingsLoginEditText.text.toString()

@@ -1,5 +1,6 @@
 package com.example.bookapplication.domain
 
+import com.example.bookapplication.domain.enums.ValidPassword
 import java.util.regex.Pattern
 
 class PasswordUseCase {
@@ -11,20 +12,20 @@ class PasswordUseCase {
                 "$"
     )
 
-    fun isValid(password: String): Boolean {
+    fun isValid(password: String): ValidPassword {
         return if (password.isEmpty()) {
             // password.setError("Field can not be empty")
-            false
+            ValidPassword.EMPTY
         }
 
         // if password does not matches to the pattern
         // it will display an error message "Password is too weak"
         else if (!passwordPattern.matcher(password).matches()) {
 //            password.setError("Password is too weak")
-            false
+            ValidPassword.WEAK
         } else {
 //            password.setError(null)
-            true
+            ValidPassword.SUCCESS
         }
     }
 }

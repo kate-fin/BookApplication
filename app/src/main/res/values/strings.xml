@@ -10,10 +10,17 @@
     <string name="is_autologin_title">Запомнить меня</string>
     <string name="input_btn_title">Войти</string>
     <string name="auth_alert">"Логин или пароль некорректны"</string>
-    <string name="descriptionTitle">Описание</string>
+    <string name="description_title">Описание</string>
     <string name="settings_title">Настройки</string>
     <string name="sign_out">Выход</string>
+    <string name="login_error_title">Ошибка логина</string>
+    <string name="password_error_title">Ошибка пароля</string>
     <string name="change_login">Изменить логин</string>
     <string name="change_password">Изменить пароль</string>
     <string name="save_changes">Сохранить изменения</string>
+    <string name="success_login">Ваш логин принят</string>
+    <string name="success_password">Ваш пароль принят</string>
+    <string name="empty_login">Логин не может быть пустым</string>
+    <string name="empty_password">Пароль не может быть пустым</string>
+    <string name="weak_password">Пароль должен содержать не менее 4 символов, 1 символ из списка:"(?=.*[@#$%^&amp;+=])" и не содержать пробелов</string>
 </resources>

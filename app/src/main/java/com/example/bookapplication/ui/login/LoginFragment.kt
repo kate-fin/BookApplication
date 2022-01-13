@@ -13,7 +13,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.bookapplication.R
 import com.example.bookapplication.databinding.FragmentLoginBinding
 import com.example.bookapplication.extension.appComponent
-import com.example.bookapplication.extension.preferences
 import javax.inject.Inject
 
 class LoginFragment : Fragment() {
@@ -36,13 +35,21 @@ class LoginFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.loginPrBar.visibility = View.GONE
         viewModel.autoLogin()
-        viewModel.haveAccess.observe(viewLifecycleOwner, { isAccess ->
-            if (isAccess) {
-                findNavController().navigate(R.id.action_loginFragment_to_bestSellersFragment)
+        viewModel.uiStateAuthorization.observe(viewLifecycleOwner, { uiState ->
+            if (uiState.isLoading) {
+                binding.loginPrBar.visibility = View.VISIBLE
             } else {
-                Toast.makeText(context, getString(R.string.auth_alert), Toast.LENGTH_SHORT).show()
-                Log.i("LoginFragment", "login or password are incorrect")
+                binding.loginPrBar.visibility = View.GONE
+            }
+            if (uiState.isLoggedIn != null) {
+                if (uiState.isLoggedIn) {
+                    findNavController().navigate(R.id.action_loginFragment_to_bestSellersFragment)
+                } else {
+                    Toast.makeText(context, getString(R.string.auth_alert), Toast.LENGTH_SHORT).show()
+                    Log.i("LoginFragment", "login or password are incorrect")
+                }
             }
         })
 

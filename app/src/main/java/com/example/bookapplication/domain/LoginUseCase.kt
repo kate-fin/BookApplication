@@ -1,19 +1,16 @@
 package com.example.bookapplication.domain
 
+import com.example.bookapplication.domain.enums.ValidLogin
 import dagger.Provides
 import java.util.regex.Pattern
 
 class LoginUseCase {
 
-    private val loginPattern = Pattern.compile("(?=\\S+$)")
-
-    fun isValid(login: String): Boolean {
+    fun isValid(login: String): ValidLogin {
         return if (login.isEmpty()) {
-            false
-        } else if (loginPattern.matcher(login).matches()) {
-            true
+            ValidLogin.EMPTY
         } else {
-            false
+            ValidLogin.SUCCESS
         }
     }
 }

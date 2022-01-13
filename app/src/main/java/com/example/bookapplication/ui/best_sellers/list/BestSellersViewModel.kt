@@ -22,6 +22,7 @@ class BestSellersViewModel @Inject constructor(private val booksApi: RepoService
     fun getBestSellers(){
         viewModelScope.launch {
             _spinner.postValue(true)
+            _error.postValue(false)
             val booksNet = booksApi.getBestSellers()
             if (booksNet != null) {
                 val books = booksNet.results.map {

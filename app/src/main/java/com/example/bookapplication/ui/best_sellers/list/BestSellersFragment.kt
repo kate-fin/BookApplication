@@ -46,6 +46,7 @@ class BestSellersFragment : Fragment() {
         })
 
         viewModel.error.observe(viewLifecycleOwner, { isError ->
+            //TODO(при заходе всегда показывает )
             if (isError) {
                 binding.bestSellersPrBar.visibility = View.GONE
                 Toast.makeText(context, getString(R.string.error_message), Toast.LENGTH_SHORT).show()
