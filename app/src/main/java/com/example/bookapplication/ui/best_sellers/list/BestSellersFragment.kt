@@ -6,21 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.bookapplication.R
 import com.example.bookapplication.databinding.FragmentBestSellersBinding
 import com.example.bookapplication.extension.appComponent
-import com.example.bookapplication.extension.preferences
-import com.example.bookapplication.interfaces.RepoService
-import com.example.bookapplication.ui.login.LoginViewModel
+import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.admanager.AdManagerAdRequest
 import javax.inject.Inject
 
 class BestSellersFragment : Fragment() {
     private var _binding: FragmentBestSellersBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: BestSellersViewModel
+
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
@@ -36,6 +35,7 @@ class BestSellersFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initAdMob()
         viewModel.getBestSellers()
         viewModel.spinner.observe(viewLifecycleOwner, { isLoading ->
             if (isLoading) {
@@ -48,11 +48,12 @@ class BestSellersFragment : Fragment() {
         viewModel.error.observe(viewLifecycleOwner, { isError ->
             if (isError) {
                 binding.bestSellersPrBar.visibility = View.GONE
-                Toast.makeText(context, getString(R.string.error_message), Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.error_message), Toast.LENGTH_SHORT)
+                    .show()
             }
         })
 
-        viewModel.bestSellersLiveData.observe(viewLifecycleOwner, {bestSellers ->
+        viewModel.bestSellersLiveData.observe(viewLifecycleOwner, { bestSellers ->
             val adapter = BooksAdapter(bestSellers)
             binding.bestSellersRecView.adapter = adapter
         })
@@ -60,5 +61,28 @@ class BestSellersFragment : Fragment() {
         binding.bestSellerToolbar.settings.setOnClickListener {
             findNavController().navigate(BestSellersFragmentDirections.actionBestSellersFragmentToSettingsFragment())
         }
+    }
+
+    private fun initAdMob() {
+        MobileAds.initialize(this.requireContext())
+        val adRequest = AdManagerAdRequest.Builder().build()
+//        RequestConfiguration.Builder()
+//            .setTestDeviceIds(Arrays.asList("C8AF12960FE3589BD9D8B30BA33DCB44"))
+        binding.bestSellersAdView.loadAd(adRequest)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.bestSellersAdView.resume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.bestSellersAdView.pause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding.bestSellersAdView.destroy()
     }
 }
