@@ -22,5 +22,5 @@
     <string name="success_password">Ваш пароль принят</string>
     <string name="empty_login">Логин не может быть пустым</string>
     <string name="empty_password">Пароль не может быть пустым</string>
-    <string name="weak_password">Пароль должен содержать не менее 4 символов, 1 символ из списка:"(?=.*[@#$%^&amp;+=])" и не содержать пробелов</string>
+    <string name="weak_password">Пароль должен содержать не менее 4 символов, 1 символ из списка:"@#$%^&amp;+=" и не содержать пробелов</string>
 </resources>

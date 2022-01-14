@@ -29,11 +29,13 @@
 
     <EditText
         android:id="@+id/settingsLoginEditText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:inputType="text"
+        android:layout_marginHorizontal="5dp"
         app:layout_constraintTop_toTopOf="@id/settingsLoginTitle"
         app:layout_constraintStart_toEndOf="@id/settingsLoginTitle"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/settingsLoginTitle"/>
 
     <TextView
@@ -50,12 +52,14 @@
 
     <EditText
         android:id="@+id/settingsPasswordEditText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
         android:inputType="textPassword"
         app:layout_constraintTop_toTopOf="@id/settingsPasswordTitle"
         app:layout_constraintBottom_toBottomOf="@id/settingsPasswordTitle"
-        app:layout_constraintStart_toEndOf="@id/settingsPasswordTitle"/>
+        app:layout_constraintStart_toEndOf="@id/settingsPasswordTitle"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/settingsSaveChanges"

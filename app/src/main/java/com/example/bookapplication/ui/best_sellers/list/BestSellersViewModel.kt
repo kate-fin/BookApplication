@@ -17,12 +17,11 @@ class BestSellersViewModel @Inject constructor(private val booksApi: RepoService
     private val _spinner = MutableLiveData<Boolean>()
     val spinner: LiveData<Boolean> get() = _spinner
     private val _error = MutableLiveData<Boolean>()
-    val error: LiveData<Boolean> get() = _spinner
+    val error: LiveData<Boolean> get() = _error
 
     fun getBestSellers(){
         viewModelScope.launch {
             _spinner.postValue(true)
-            _error.postValue(false)
             val booksNet = booksApi.getBestSellers()
             if (booksNet != null) {
                 val books = booksNet.results.map {
