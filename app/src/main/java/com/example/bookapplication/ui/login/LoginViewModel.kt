@@ -4,9 +4,9 @@ import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.bookapplication.extension.autologin
-import com.example.bookapplication.extension.login
-import com.example.bookapplication.extension.password
+import com.example.bookapplication.extensions.autologin
+import com.example.bookapplication.extensions.login
+import com.example.bookapplication.extensions.password
 import com.example.bookapplication.ui.login.models.IdentificatorUiState
 import javax.inject.Inject
 

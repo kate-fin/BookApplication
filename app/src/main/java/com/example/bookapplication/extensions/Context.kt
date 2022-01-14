@@ -1,4 +1,4 @@
-package com.example.bookapplication.extension
+package com.example.bookapplication.extensions
 
 import android.content.Context
 import android.content.SharedPreferences

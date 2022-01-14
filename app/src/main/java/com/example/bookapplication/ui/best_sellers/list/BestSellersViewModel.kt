@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.bookapplication.interfaces.RepoService
 import com.example.bookapplication.ui.best_sellers.BookModel
-import com.example.bookapplication.source.remote.RetrofitModule
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -19,8 +19,13 @@ class BestSellersViewModel @Inject constructor(private val booksApi: RepoService
     private val _error = MutableLiveData<Boolean>()
     val error: LiveData<Boolean> get() = _error
 
+    private val handler = CoroutineExceptionHandler { coroutineContext, throwable ->
+        _error.postValue(true)
+        _spinner.postValue(false)
+    }
+
     fun getBestSellers(){
-        viewModelScope.launch {
+        viewModelScope.launch(handler) {
             _spinner.postValue(true)
             val booksNet = booksApi.getBestSellers()
             if (booksNet != null) {
@@ -31,6 +36,7 @@ class BestSellersViewModel @Inject constructor(private val booksApi: RepoService
                 _spinner.postValue(false)
             } else {
                 _error.postValue(true)
+                _spinner.postValue(false)
             }
         }
     }

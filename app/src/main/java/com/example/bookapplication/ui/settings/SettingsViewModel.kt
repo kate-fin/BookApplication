@@ -8,9 +8,9 @@ import com.example.bookapplication.domain.LoginUseCase
 import com.example.bookapplication.domain.PasswordUseCase
 import com.example.bookapplication.domain.enums.ValidLogin
 import com.example.bookapplication.domain.enums.ValidPassword
-import com.example.bookapplication.extension.autologin
-import com.example.bookapplication.extension.login
-import com.example.bookapplication.extension.password
+import com.example.bookapplication.extensions.autologin
+import com.example.bookapplication.extensions.login
+import com.example.bookapplication.extensions.password
 import com.example.bookapplication.ui.settings.models.ChangeIdentificatorUiState
 import javax.inject.Inject
 

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bookapplication.R
-import com.example.bookapplication.extension.showAlert
+import com.example.bookapplication.extensions.showAlert
 import com.example.bookapplication.ui.best_sellers.BookModel
 
 class BooksAdapter(private val books: List<BookModel>): RecyclerView.Adapter<BooksViewHolder>() {

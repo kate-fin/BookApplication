@@ -2,7 +2,7 @@ package com.example.bookapplication.di
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.example.bookapplication.extension.preferences
+import com.example.bookapplication.extensions.preferences
 import dagger.Module
 import dagger.Provides
 

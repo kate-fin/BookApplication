@@ -5,9 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.bookapplication.databinding.ActivityMainBinding
-import com.example.bookapplication.extension.appComponent
+import com.example.bookapplication.extensions.appComponent
 import com.google.android.material.navigation.NavigationView
-import javax.inject.Inject
 
 
 class MainActivity : AppCompatActivity() {

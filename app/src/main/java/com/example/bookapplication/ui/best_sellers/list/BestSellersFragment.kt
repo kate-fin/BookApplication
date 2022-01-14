@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.bookapplication.R
 import com.example.bookapplication.databinding.FragmentBestSellersBinding
-import com.example.bookapplication.extension.appComponent
+import com.example.bookapplication.extensions.appComponent
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.admanager.AdManagerAdRequest
 import javax.inject.Inject

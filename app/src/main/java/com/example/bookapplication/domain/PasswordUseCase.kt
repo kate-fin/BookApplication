@@ -14,17 +14,10 @@ class PasswordUseCase {
 
     fun isValid(password: String): ValidPassword {
         return if (password.isEmpty()) {
-            // password.setError("Field can not be empty")
             ValidPassword.EMPTY
-        }
-
-        // if password does not matches to the pattern
-        // it will display an error message "Password is too weak"
-        else if (!passwordPattern.matcher(password).matches()) {
-//            password.setError("Password is too weak")
+        } else if (!passwordPattern.matcher(password).matches()) {
             ValidPassword.WEAK
         } else {
-//            password.setError(null)
             ValidPassword.SUCCESS
         }
     }

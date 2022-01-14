@@ -1,8 +1,6 @@
 package com.example.bookapplication.ui.settings
 
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.bookapplication.R
 import com.example.bookapplication.databinding.FragmentSettingsBinding
-import com.example.bookapplication.extension.*
-import com.example.bookapplication.ui.ViewModelFactory
+import com.example.bookapplication.extensions.*
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback

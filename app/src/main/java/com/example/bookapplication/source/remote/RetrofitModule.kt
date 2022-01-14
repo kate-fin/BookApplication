@@ -1,14 +1,9 @@
 package com.example.bookapplication.source.remote
 
-import com.example.bookapplication.interfaces.RepoService
-import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 object RetrofitModule {
     val client: OkHttpClient = OkHttpClient.Builder()
