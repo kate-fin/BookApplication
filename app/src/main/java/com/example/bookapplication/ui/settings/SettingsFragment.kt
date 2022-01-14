@@ -14,6 +14,12 @@ import com.example.bookapplication.R
 import com.example.bookapplication.databinding.FragmentSettingsBinding
 import com.example.bookapplication.extension.*
 import com.example.bookapplication.ui.ViewModelFactory
+import com.google.android.gms.ads.AdError
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import javax.inject.Inject
 
 class SettingsFragment: Fragment() {
@@ -22,6 +28,7 @@ class SettingsFragment: Fragment() {
     private lateinit var viewModel: SettingsViewModel
     @Inject
     lateinit var viewModelProvider: ViewModelProvider.Factory
+    private var interAd: InterstitialAd? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,8 +44,6 @@ class SettingsFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.settingsPrBar.visibility = View.GONE
-//        binding.settingsLoginEditText.setText(preferences.login)
-//        binding.settingsPasswordEditText.setText(preferences.password)
 
         viewModel.uiStateLogin.observe(viewLifecycleOwner, { uiState ->
             if (uiState.isLoading) {
@@ -96,7 +101,55 @@ class SettingsFragment: Fragment() {
 
         binding.settingsExit.setOnClickListener {
             viewModel.saveAutologin(false)
-            findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToLoginFragment())
+            showInterAd()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadInterAd()
+    }
+
+    private fun loadInterAd() {
+        val adRequest = AdRequest.Builder().build()
+        InterstitialAd.load(requireContext(), "/6499/example/interstitial", adRequest, object : InterstitialAdLoadCallback() {
+            override fun onAdLoaded(ad: InterstitialAd) {
+                interAd = ad
+            }
+
+            override fun onAdFailedToLoad(p0: LoadAdError) {
+                interAd = null
+            }
+        })
+    }
+
+    private fun showInterAd() {
+        if (interAd == null) {
+            findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToLoginFragment())
+        } else {
+            interAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
+                override fun onAdDismissedFullScreenContent() {
+                    goToLogin()
+                    interAd = null
+                    loadInterAd()
+                }
+
+                override fun onAdFailedToShowFullScreenContent(p0: AdError) {
+                    goToLogin()
+                    interAd = null
+                    loadInterAd()
+                }
+
+                override fun onAdShowedFullScreenContent() {
+                    interAd = null
+                    loadInterAd()
+                }
+            }
+            interAd?.show(requireActivity())
+        }
+    }
+
+    private fun goToLogin() {
+        findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToLoginFragment())
     }
 }

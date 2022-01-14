@@ -66,8 +66,6 @@ class BestSellersFragment : Fragment() {
     private fun initAdMob() {
         MobileAds.initialize(this.requireContext())
         val adRequest = AdManagerAdRequest.Builder().build()
-//        RequestConfiguration.Builder()
-//            .setTestDeviceIds(Arrays.asList("C8AF12960FE3589BD9D8B30BA33DCB44"))
         binding.bestSellersAdView.loadAd(adRequest)
     }
 
