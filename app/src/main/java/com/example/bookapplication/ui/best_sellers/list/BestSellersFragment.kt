@@ -23,20 +23,25 @@ class BestSellersFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        context?.appComponent?.inject(this)
+        viewModel = ViewModelProvider(this, viewModelFactory)[BestSellersViewModel::class.java]
+        viewModel.getBestSellers()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentBestSellersBinding.inflate(inflater, container, false)
-        context?.appComponent?.inject(this)
-        viewModel = ViewModelProvider(this, viewModelFactory)[BestSellersViewModel::class.java]
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdMob()
-        viewModel.getBestSellers()
         viewModel.spinner.observe(viewLifecycleOwner, { isLoading ->
             if (isLoading) {
                 binding.bestSellersPrBar.visibility = View.VISIBLE
